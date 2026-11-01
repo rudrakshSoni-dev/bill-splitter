@@ -6,7 +6,7 @@ bill, and it gets split between everyone down to the cent. Each person pays thei
 Built for the DoCoDeGo SDE intern assignment. The original brief is in
 [docs/ASSIGNMENT.md](docs/ASSIGNMENT.md).
 
-**Video walkthrough:** _add link here_
+**Video walkthrough:** https://youtu.be/qpBN2HvEAYk
 
 ![Bills page](docs/screenshot.png)
 
