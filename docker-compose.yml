@@ -1,0 +1,12 @@
+services:
+  app:
+    build: .
+    ports:
+      - "5173:5173"
+      - "8787:8787"
+    volumes:
+      # keeps the local D1 database between restarts
+      - d1-data:/app/api/.wrangler
+
+volumes:
+  d1-data:

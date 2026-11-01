@@ -115,7 +115,9 @@ pnpm install
 pnpm dev          # api on :8787 and web on :5173
 ```
 
-Open http://localhost:5173. The starter page shows a title. `/api/health` returns `{ "status": "ok" }`.
+Open http://localhost:5173. Create a home with its members, add bills and pay shares from there. `/api/health` returns `{ "status": "ok" }`.
+
+Wait for `Ready on http://localhost:8787` in the api log before using the page. Vite starts first, so for a few seconds `/api` calls get a 502. If Vite says it moved to port 5174, an older `pnpm dev` is still running. Stop it and start again, because the web proxy always talks to the api on 8787.
 
 ```bash
 pnpm test         # run the visible tests in api/test
@@ -134,6 +136,18 @@ When you change `api/wrangler.jsonc`, refresh the `Env` types:
 ```bash
 pnpm --filter bill-splitter-api cf-typegen
 ```
+
+### Docker (optional)
+
+`pnpm dev` is the main way to run it. If your local Node or pnpm setup gives trouble, the same thing runs in one container:
+
+```bash
+docker compose up -d --build        # api on :8787 and web on :5173
+docker compose exec app pnpm test   # tests inside the container
+docker compose down                 # stop
+```
+
+The local database is kept in a Docker volume between restarts. Don't run this and `pnpm dev` at the same time, because they use the same ports.
 
 ## Rules for the tests
 
